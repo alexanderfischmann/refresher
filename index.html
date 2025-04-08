@@ -6,22 +6,44 @@
 </head>
 <body>
         <div class="counter">
-            <button onclick="addCounter()" class="button-counter">
+            <button onclick="checkInfinity(); addCounter(); countClicks()" class="button-counter">
                 Number: <span id="count">0</span>
             </button>
+        </div>
+
+        <div>
+            Clicked <span id="count-number">0</span> Times
+        </div>
+        <div>
+            Clicks Remaining Until Infinity: <span id="infinity-number">10</span>
         </div>
     
 
 
     <script>
         let number = 2
+        let countNumber = 0
+        let approachingInfinityNumber = 10
 
         function addCounter(){
             number = (number * number)
             document.getElementById('count').textContent = number
         }
 
-        addCounter()
+        function countClicks(){
+            countNumber += 1
+            document.getElementById('count-number').textContent = countNumber
+        }
+
+        function checkInfinity(){
+            if(
+                document.getElementById('count').textContent != "Infinity"
+            ) {
+                approachingInfinityNumber -= 1
+                document.getElementById('infinity-number').textContent = approachingInfinityNumber
+            }
+        }
+
     </script>
 </body>
 </html>
